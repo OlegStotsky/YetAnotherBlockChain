@@ -1,0 +1,32 @@
+{
+  "dependencies": {
+    "eslint-config-prettier": "^3.0.1",
+    "husky": "^1.0.0-rc.13"
+  },
+  "name": "blockchain",
+  "version": "1.0.0",
+  "main": "blockchain.js",
+  "devDependencies": {
+    "eslint": "^5.4.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "jest": "^23.5.0",
+    "prettier": "^1.14.2"
+  },
+  "scripts": {
+    "lint": "eslint ./ --fix",
+    "test": "jest"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "author": "Oleg Stotsky",
+  "license": "ISC",
+  "description": ""
+}
