@@ -35,6 +35,7 @@ class Blockchain {
         recipient
     };
     this.pendingTransactions.push(newTransaction);
+    return this.getLastBlock()['index'] + 1;
   }
 
   hashBlock(prevBlockHash, curBlockData, nonce) {
@@ -51,7 +52,7 @@ class Blockchain {
           nonce++;
       } while (!hash.startsWith("0000"));
 
-      return hash;
+      return [hash, nonce];
   }
 }
 
