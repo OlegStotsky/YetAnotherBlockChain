@@ -10,14 +10,14 @@ describe("Blockchain", () => {
             const date = Date.now();
             const block = blockchain.createNewBlock(nonce, prevBlockHash, hash, date);
             expect(block).toMatchObject({
-                index: 1,
+                index: 2,
                 timestamp: date,
                 transactions: [],
                 hash,
                 previousBlockHash: prevBlockHash
             });  
-            expect(blockchain.chain.length).toEqual(1);
-            expect(blockchain.chain[0]).toEqual(block);
+            expect(blockchain.chain.length).toEqual(2);
+            expect(blockchain.chain[1]).toEqual(block);
         });
     });
     describe("createNewTransaction", () => {
@@ -30,6 +30,19 @@ describe("Blockchain", () => {
                 sender: "Oleg",
                 recipient: "Vasya"
             });
+        });
+    });
+    describe("proofOfWork", () => {
+        it("Correctly generates hash that starts with 0000", () => {
+            const blockchain = new Blockchain();
+            const hash = blockchain.proofOfWork("ANFASFASK;L124", [
+                {
+                    amount: 50,
+                    sender: "Oleg",
+                    recepient: "Vasya"
+                }
+            ]);
+            expect(hash).toMatch(/^0000/);
         });
     });
 });
